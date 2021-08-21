@@ -1,0 +1,39 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Mail_.Resources">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="ColorDictionary.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+  
+  <!-- Стиль Grid полного письма в MainWindow.xaml-->
+  <Style x:Key="GridMessageFullStyle" TargetType="{x:Type Grid}">
+    <Setter Property="Background" Value="{StaticResource CustomWhite2}"/>
+    <Setter Property="Visibility" Value="Hidden"/>
+    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+    <Setter Property="VerticalAlignment" Value="Stretch"/>
+  </Style>
+  <!---->
+
+  <!-- Стиль Grid с содержимым письма в MainWindow.xaml-->
+  <Style x:Key="GridMessageStyle" TargetType="{x:Type Grid}">
+    <Setter Property="Background" Value="{StaticResource White}"/>
+    <Setter Property="Margin" Value="20"/>
+    <Setter Property="Height" Value="600"/>
+  </Style>
+  <!---->
+
+  <!-- Стиль Grid в SendMessageWindow.xaml-->
+  <Style x:Key="GridStyle" TargetType="{x:Type Grid}">
+    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+    <Setter Property="VerticalAlignment" Value="Stretch"/>
+  </Style>
+  <!---->
+
+  <!-- Стиль Grid ошибки в MainWindow.xaml-->
+  <Style x:Key="GridErrorStyle" TargetType="{x:Type Grid}">
+    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+    <Setter Property="Height" Value="50"/>
+    <Setter Property="Background" Value="#F8CECE"/>
+  </Style>
+  <!---->
+</ResourceDictionary>

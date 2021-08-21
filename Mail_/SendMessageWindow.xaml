@@ -1,0 +1,170 @@
+﻿<Window x:Class="Mail_.SendMessageWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Mail_"
+        xmlns:res="clr-namespace:Mail_.Properties"
+        mc:Ignorable="d"
+        Title="{x:Static res:Resources.Title2}" Height="900" Width="1200" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid>
+        <Grid x:Name="GridSendMessage" Style="{StaticResource GridStyle}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.4*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.2*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Style="{StaticResource GridStyle}" Background="#F2F2F2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="55"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Style="{StaticResource GridStyle}" Margin="20, 20, 20, 5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.15*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column="0" Text="{x:Static res:Resources.To}" Style="{StaticResource TextBlockMessageSettingStyle}"/>
+
+                    <TextBox Grid.Column="1" Style="{StaticResource TextBoxMessageSettingStyle}"/>
+                </Grid>
+
+                <Grid Grid.Row="1" Style="{StaticResource GridStyle}" Margin="20, 15, 20, 5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.15*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column="0" Text="{x:Static res:Resources.From}" Style="{StaticResource TextBlockMessageSettingStyle}"/>
+
+                    <Grid Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.4*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Column="0" Style="{StaticResource BorderStylesStyle}">
+                            <ComboBox x:Name="ComboBoxAccounts" Style="{DynamicResource ComboBoxNewStyle}">
+                                <ComboBoxItem>
+                                    <TextBlock Text="asd"/>
+                                </ComboBoxItem>
+                            </ComboBox>
+                        </Border>
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Row="2" Style="{StaticResource GridStyle}" Margin="20, 15, 20, 5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.15*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column="0" Text="{x:Static res:Resources.Theme}" Style="{StaticResource TextBlockMessageSettingStyle}"/>
+
+                    <TextBox Grid.Column="1" Style="{StaticResource TextBoxMessageSettingStyle}"/>
+                </Grid>
+
+                <Grid Grid.Row="3" Style="{StaticResource GridStyle}" Margin="20, 15, 20, 5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.15*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Grid.Column="1" Style="{StaticResource BorderStylesStyle}">
+                        <StackPanel Style="{StaticResource StackPanelStylesStyle}">
+                            <Button Style="{StaticResource ButtonEditStyle}">
+                                <Image Source="Images/b.png" Style="{StaticResource IconStylesStyle}"/>
+                            </Button>
+
+                            <Button Style="{StaticResource ButtonEditStyle}">
+                                <Image Source="Images/italics.png" Style="{StaticResource IconStylesStyle}"/>
+                            </Button>
+
+                            <Button Style="{StaticResource ButtonEditStyle}">
+                                <Image Source="Images/underline.png" Style="{StaticResource IconStylesStyle}"/>
+                            </Button>
+
+                            <Button Style="{StaticResource ButtonEditStyle}">
+                                <Image Source="Images/crossed out.png" Style="{StaticResource IconStylesStyle}"/>
+                            </Button>
+
+                            <ComboBox x:Name="ComboBoxStyles" Width="90" Style="{DynamicResource ComboBoxNewStyle}">
+                                <ComboBoxItem>
+                                    <TextBlock Text="asd"/>
+                                </ComboBoxItem>
+                            </ComboBox>
+
+                            <Button Style="{StaticResource ButtonEditStyle}">
+                                <Image Source="Images/numbering.png" Style="{StaticResource IconStylesStyle}"/>
+                            </Button>
+
+                            <Button Style="{StaticResource ButtonEditStyle}">
+                                <Image Source="Images/numbering.png" Style="{StaticResource IconStylesStyle}"/>
+                            </Button>
+
+                            <Button Style="{StaticResource ButtonEditStyle}">
+                                <Image Source="Images/turn left.png" Style="{StaticResource IconStylesStyle}"/>
+                            </Button>
+
+                            <Button Style="{StaticResource ButtonEditStyle}">
+                                <Image Source="Images/turn right.png" Style="{StaticResource IconStylesStyle}"/>
+                            </Button>
+
+                            <Button Style="{StaticResource ButtonEditStyle}">
+                                <Image Source="Images/numbering.png" Style="{StaticResource IconStylesStyle}"/>
+                            </Button>
+
+                            <Button Style="{StaticResource ButtonEditStyle}">
+                                <Image Source="Images/smile.png" Style="{StaticResource IconStylesStyle}"/>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="1" Style="{StaticResource GridStyle}" Background="White">
+                <RichTextBox Style="{StaticResource RichTextBoxBodyStyle}"/>
+            </Grid>
+
+            <Border Grid.Row="2" Style="{StaticResource BorderSplittersStyle}">
+                <Grid Style="{StaticResource GridStyle}" Margin="15, 0, 15, 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="0" Width="200" Height="60" HorizontalAlignment="Left" Style="{StaticResource StyleButtonBottom}" Click="ButtonSend_Click">
+                        <Grid Style="{StaticResource GridStyle}">
+                            <Image Source="Images/arrow2.png" Style="{StaticResource IconArrowSendStyle}"/>
+                            <TextBlock Text="{x:Static res:Resources.Send2}" Style="{StaticResource TextBlockSendStyle}"/>
+                        </Grid>
+                    </Button>
+
+                    <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
+                        <StackPanel.Resources>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Margin" Value="10, 0, 0, 0"/>
+                            </Style>
+                        </StackPanel.Resources>
+                        <Button Style="{StaticResource StyleButtonBottom}">
+                            <Image Source="Images/dump.png" Style="{StaticResource IconFunctionStyle}"/>
+                        </Button>
+
+                        <Button Style="{StaticResource StyleButtonBottom}">
+                            <Image Source="Images/clip.png" Style="{StaticResource IconFunctionStyle}"/>
+                        </Button>
+
+                        <Button Style="{StaticResource StyleButtonBottom}">
+                            <Image Source="Images/palette.png" Style="{StaticResource IconFunctionStyle}"/>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

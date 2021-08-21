@@ -1,0 +1,41 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Mail_.Resources">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="ColorDictionary.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+  
+  <!-- Шаблон для вывода папок-->
+  <DataTemplate x:Key="FolderTemplate">
+    <StackPanel Orientation="Horizontal" Margin="10,5,0,0" Height="55" Width="180" HorizontalAlignment="Center" >
+      <Image Source="/Images/folder.png" HorizontalAlignment="Center"/>
+      <TextBlock FontSize="18" TextAlignment="Right"  VerticalAlignment="Center" Text="{Binding Path=Name}"/>
+    </StackPanel>
+  </DataTemplate>
+  <!---->
+
+  <!-- Шаблон для вывода сообщений-->
+  <DataTemplate x:Key="MessageTemplate">
+    <Border VerticalAlignment="Stretch" BorderThickness="0, 1, 0, 1" BorderBrush="{StaticResource Gray}">
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition  Height="40"/>
+          <RowDefinition  Height="30"/>
+          <RowDefinition  Height="75"/>
+        </Grid.RowDefinitions>
+        <Grid Height="40" Grid.Row="0" >
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="0.3*"/>
+          </Grid.ColumnDefinitions>
+          <TextBlock Grid.Column="0" x:Name="TextBlockFromName" HorizontalAlignment="Center" Width="350" Height="30" FontSize="22" TextTrimming="CharacterEllipsis"  Margin="0,10,0,0" Text="{Binding Path=FromName}"/>
+          <TextBlock Grid.Column="1" x:Name="TextBlockDate" HorizontalAlignment="Right" Width="55" Height="30" FontSize="13"  Foreground="{StaticResource CustomDarkGray3}" Margin="0,0,10,0" Text="{Binding Path=Date}"/>
+        </Grid>
+        <TextBlock Grid.Row="1" x:Name="TextBlockSubject" Width="475" Height="30" FontSize="17" TextTrimming="WordEllipsis" Text="{Binding Path=Subject}"/>
+        <TextBlock Grid.Row="2" x:Name="TextBlockBody" Width="475" Height="75" FontSize="17" TextTrimming="WordEllipsis" Foreground="{StaticResource CustomDarkGray3}" Text="{Binding Path=Body}" TextWrapping="Wrap"/>
+      </Grid>
+    </Border>
+  </DataTemplate>
+  <!---->
+    
+</ResourceDictionary>

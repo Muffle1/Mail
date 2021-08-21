@@ -1,0 +1,243 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:dd="clr-namespace:GongSolutions.Wpf.DragDrop;assembly=GongSolutions.Wpf.DragDrop"
+        xmlns:local="clr-namespace:Mail_"
+		xmlns:tb="http://www.hardcodet.net/taskbar"
+        xmlns:res="clr-namespace:Mail_.Properties"
+        mc:Ignorable="d"
+		x:Class="Mail_.MainWindow"
+        Title="{x:Static res:Resources.Title1}" Height="1080" Width="1920" WindowStartupLocation="CenterScreen" WindowState="Maximized" Closing="Window_Closing">
+
+    <Grid x:Name="GridMail">
+        <Grid.Background>
+            <ImageBrush ImageSource="Images/B1.jpg"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="45*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="111*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="235*"/>
+            </Grid.ColumnDefinitions>
+            <tb:TaskbarIcon x:Name="myNotifyIcon" Visibility="Visible" ToolTipText="Mail" IconSource="Images/message.ico" MenuActivation="LeftOrRightClick" PopupActivation="DoubleClick">
+                <tb:TaskbarIcon.ContextMenu>
+                    <ContextMenu Background="White">
+                        <MenuItem Header="Show" Click="MenuItemSave_Click" />
+                        <MenuItem Header="Exit" Click="MenuItemExit_Click"/>
+                    </ContextMenu>
+                </tb:TaskbarIcon.ContextMenu>
+            </tb:TaskbarIcon>
+
+            <Grid Grid.Column="0" Grid.ColumnSpan="2" Background="#C9C9C9">
+                <StackPanel>
+                    <StackPanel Style="{StaticResource StackPanelImageLeftMenuStyle}" Margin="0, 20, 0, 0">
+                        <Image Source="Images/letter1.png" Style="{StaticResource IconLetter1Style}"/>
+
+                        <TextBlock x:Name="folderName1" Text="INBOX" Style="{StaticResource TextBlockFolderName1Style}"/>
+                    </StackPanel>
+
+                    <ListBox x:Name="Accounts" SelectionChanged="Accounts_SelectionChanged" Style="{StaticResource ListBoxAccountsStyle}" ItemContainerStyle="{StaticResource StyleForAccounts}"/>
+
+                    <TextBlock Text="{x:Static res:Resources.Folder}" Style="{StaticResource TextBlockFoldersStyle}"/>
+
+                    <ListBox x:Name="Folders" dd:DragDrop.IsDropTarget="True"  SelectionChanged="Folders_SelectionChanged" Style="{StaticResource ListBoxFoldersStyle}" ItemTemplate="{StaticResource FolderTemplate}"/>
+
+                    <TextBlock Text="{x:Static res:Resources.Label}" Style="{StaticResource TextBlockFoldersStyle}"/>
+
+                    <Button Margin="10,20,0,0" Style="{StaticResource BtnTemplate}">
+                        <StackPanel Style="{StaticResource StackPanelImageLeftMenuStyle}">
+                            <Image Source="Images/heart.png" Style="{StaticResource IconHeartStyle}"/>
+
+                            <TextBlock Text="{x:Static res:Resources.Favourites}" Style="{StaticResource TextBlockHeartStyle}"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Margin="10, 5, 0, 0" Style ="{StaticResource BtnTemplate}">
+                        <StackPanel Style="{StaticResource StackPanelImageLeftMenuStyle}">
+                            <Image Source="Images/heart.png" Style="{StaticResource IconHeartStyle}"/>
+
+                            <TextBlock Text="{x:Static res:Resources.Mailings}" Style="{StaticResource TextBlockHeartStyle}"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+            <GridSplitter Grid.Column="2" Style="{StaticResource GridSplitterStyle}"/>
+
+            <Grid Grid.Column="3" Background="#F2F2F2">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Margin="0, 0, 0, 10" Background="#FFFFFF">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="9*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Grid.Column="0" CornerRadius="10" BorderBrush="Gray" BorderThickness="2" Margin="20, 10, 0, 10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.15*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Grid.Column="0" Source="Images/magnifier.png" Style="{StaticResource IconMagnifierStyle}"/>
+
+                            <TextBox Grid.Column="1" Style="{StaticResource TextBoxSearchStyle}"/>
+                        </Grid>
+                    </Border>
+
+                    <Button Grid.Column="1" x:Name="ButtonSend" Click="ButtonSend_Click" Style="{StaticResource ButtonSendStyle}">
+                        <Image Source="Images/pencil.png"/>
+                    </Button>
+                </Grid>
+
+                <Grid Grid.Row="1" x:Name="MessagesGrid" Background="#FFFFFF">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.2*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" Source="Images/letter2.png" Style="{StaticResource IconLetter2Style}"/>
+
+                        <TextBlock Grid.Column="1" Text="INBOX" x:Name="folderName2" Style="{StaticResource TextBlockFolderName2Style}"/>
+                    </Grid>
+
+                    <ListBox x:Name="listBoxMessages" dd:DragDrop.IsDropTarget="True" dd:DragDrop.IsDragSource="True" Grid.Row="1" Style="{StaticResource ListBoxMessagesStyle}" ItemTemplate="{StaticResource MessageTemplate}" ItemContainerStyle="{StaticResource ListBoxMessagesItemStyle}" SelectionChanged="ListBox_SelectionChanged">
+                        <ListBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem x:Name="MoveFolders" Header="{x:Static res:Resources.Transfer}" MenuItem.Click="MoveFolders_Click"/>
+                            </ContextMenu>
+                        </ListBox.ContextMenu>
+                    </ListBox>
+                </Grid>
+            </Grid>
+
+            <GridSplitter Grid.Column="4" Style="{StaticResource GridSplitterStyle}"/>
+
+            <Grid Grid.Column="5" x:Name="MessageFull" Style="{StaticResource GridMessageFullStyle}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1.2*"/>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition Height="6*"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Style="{StaticResource StackPanelMessageFullFunctionStyle}">
+                    <StackPanel Style="{StaticResource StackPanelMessageFullTopMenuStyle}">
+                        <Button Style="{StaticResource ButtonTopStyle}">
+                            <Image Source="Images/heart.png" Style="{StaticResource IconFunctionStyle}"/>
+                        </Button>
+
+                        <TextBlock Text="{x:Static res:Resources.InFavourites}" Style="{StaticResource TextBlockFunctionStyle}"/>
+                    </StackPanel>
+
+                    <StackPanel Style="{StaticResource StackPanelMessageFullTopMenuStyle}">
+                        <Button Style="{StaticResource ButtonTopStyle}">
+                            <Image Source="Images/exclamation_mark.png" Style="{StaticResource IconFunctionStyle}"/>
+                        </Button>
+
+                        <TextBlock Text="{x:Static res:Resources.InSpam}" Style="{StaticResource TextBlockFunctionStyle}"/>
+                    </StackPanel>
+
+                    <StackPanel Style="{StaticResource StackPanelMessageFullTopMenuStyle}">
+                        <Button Style="{StaticResource ButtonTopStyle}">
+                            <Image Source="Images/archive.png" Style="{StaticResource IconFunctionStyle}"/>
+                        </Button>
+
+                        <TextBlock Text="{x:Static res:Resources.InArchive}" Style="{StaticResource TextBlockFunctionStyle}"/>
+                    </StackPanel>
+
+                    <StackPanel Style="{StaticResource StackPanelMessageFullTopMenuStyle}">
+                        <Button Style="{StaticResource ButtonTopStyle}">
+                            <Image Source="Images/dump.png" Style="{StaticResource IconFunctionStyle}"/>
+                        </Button>
+
+                        <TextBlock Text="{x:Static res:Resources.Delete}" Style="{StaticResource TextBlockFunctionStyle}"/>
+                    </StackPanel>
+
+                    <StackPanel Style="{StaticResource StackPanelMessageFullTopMenuStyle}">
+                        <Button Style="{StaticResource ButtonTopStyle}">
+                            <Image Source="Images/points.png" Style="{StaticResource IconFunctionStyle}"/>
+                        </Button>
+
+                        <TextBlock Text="{x:Static res:Resources.Action}" Style="{StaticResource TextBlockFunctionStyle}"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <TextBlock Grid.Row="1" x:Name="TitleMessage" Style="{StaticResource TextBlockTitleMessageStyle}"/>
+
+                <Grid Grid.Row="2" Style="{StaticResource GridMessageStyle}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.5*"/>
+                        <RowDefinition Height="4.5*"/>
+                        <RowDefinition Height="0.7*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock x:Name="FromDisplayName" Grid.Row="0" Style="{StaticResource TextBlockFromStyle}"/>
+
+                    <TextBlock x:Name="DateMessage" Grid.Row="0" Style="{StaticResource TextBlockDateStyle}"/>
+
+                    <Button x:Name="BtnBack" Grid.Row="0" Style="{StaticResource ButtonFullMessage}" Margin = "0, 0, 80, 0">
+                        <Image Source="Images/arrow.png" Style="{StaticResource IconFunctionStyle}"/>
+                    </Button>
+
+                    <Button x:Name="BtnAction" Grid.Row="0" Style="{StaticResource ButtonFullMessage}" Margin = "0, 0, 20, 0">
+                        <Image Source="Images/points.png" Style="{StaticResource IconFunctionStyle}"/>
+                    </Button>
+
+                    <ScrollViewer Grid.Row="1" Style="{StaticResource ScrollViewerHTMLStyle}">
+                        <WebBrowser x:Name="BodyMessage"></WebBrowser>
+                        <!-- <TextBlock x:Name="BodyMessage" Style="{StaticResource TextBlockBodyStyle}"/>-->
+                    </ScrollViewer>
+
+                    <StackPanel  Grid.Row="2" Style="{StaticResource StackPanelMessageFullBottomMenuStyle}">
+                        <Button Style="{StaticResource ButtonSendOrReply}">
+                            <TextBlock Text = "{x:Static res:Resources.Send1}" Style="{StaticResource TextBlockSendOrReplyStyle}"/>
+                        </Button>
+                        <Button Style="{StaticResource ButtonSendOrReply}">
+                            <TextBlock Text = "{x:Static res:Resources.Send2}" Style="{StaticResource TextBlockSendOrReplyStyle}"/>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid x:Name="GridError" Visibility="Hidden" Background="#F8CECE">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Margin="0, 0, 10, 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{x:Static res:Resources.Error1}" Grid.Column="0" Style="{StaticResource TextBlockError2Style}"/>
+                <Button x:Name="Close" Click="Close_Click" Grid.Column="1" Style="{StaticResource ButtonErrorStyle}">
+                    <Button.Content>
+                        <Image Source="Images/Cross.png"/>
+                    </Button.Content>
+                </Button>
+            </Grid>
+            <TextBlock Text="{x:Static res:Resources.Error2}" x:Name="TextBlockError" Grid.Row="1" Style="{StaticResource TextBlockError1Style}"/>
+        </Grid>
+    </Grid>
+</Window>

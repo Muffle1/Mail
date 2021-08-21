@@ -1,0 +1,26 @@
+﻿<Application x:Class="Mail_.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Mail_"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/ButtonDictionary.xaml" />
+                <ResourceDictionary Source="Resources/BorderDictionary.xaml" />
+                <ResourceDictionary Source="Resources/GridDictionary.xaml" />
+                <ResourceDictionary Source="Resources/ImageDictionary.xaml" />
+                <ResourceDictionary Source="Resources/ListBoxDictionary.xaml" />
+                <ResourceDictionary Source="Resources/ScrollViewerDictionary.xaml" />
+                <ResourceDictionary Source="Resources/StackPanelDictionary.xaml" />
+                <ResourceDictionary Source="Resources/TextBlockDictionary.xaml" />
+                <ResourceDictionary Source="Resources/TextBoxDictionary.xaml" />
+                <ResourceDictionary Source="Resources/ComboBoxDictionary.xaml" />
+                <ResourceDictionary Source="Resources/DataTemplateDictionary.xaml" />
+                <ResourceDictionary Source="Resources/GridSplitterDictionary.xaml" />
+                <ResourceDictionary Source="Resources/RichTextBoxDictionary.xaml" />
+                <ResourceDictionary Source="Resources/LanguageDictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

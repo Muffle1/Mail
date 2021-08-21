@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <mailboxes>
+        <mailbox>
+            <login></login>
+            <hostname>imap.gmail.com</hostname>
+            <port>993</port>
+            <password></password>
+        </mailbox>
+    </mailboxes>
+</configuration>

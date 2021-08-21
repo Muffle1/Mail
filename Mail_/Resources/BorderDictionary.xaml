@@ -1,0 +1,25 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Mail_.Resources">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="ColorDictionary.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+
+  <!-- Стиль Border для обводки кнопок стилей в SendMessageWindow.xaml-->
+  <Style x:Key="BorderStylesStyle" TargetType="{x:Type Border}">
+    <Setter Property="Background" Value="{StaticResource CustomWhite1}"/>
+    <Setter Property="BorderBrush" Value="{StaticResource Gray}"/>
+    <Setter Property="BorderThickness" Value="2"/>
+  </Style>
+  <!---->
+
+  <!-- Стиль Border разделителя в SendMessageWindow.xaml-->
+  <Style x:Key="BorderSplittersStyle" TargetType="{x:Type Border}">
+    <Setter Property="Background" Value="White"/>
+    <Setter Property="BorderBrush" Value="Gray"/>
+    <Setter Property="BorderThickness" Value="0, 2, 0, 0"/>
+    <Setter Property="VerticalAlignment" Value="Stretch"/>
+    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+  </Style>
+  <!---->
+</ResourceDictionary>
